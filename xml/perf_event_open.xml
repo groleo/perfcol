@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metrics version="2017-03-10" name="perf_event">
+  <extra config="PERF_EVENT"/>
+  <member name="perf_hw" brief="Hardware Events"
+          description="This indicates one of the 'generalized' hardware events provided by the kernel"
+          type="PERF_TYPE_HARDWARE">
+      <entity name="cpu_cycle" brief="CPU Cycles"
+              description="the count of CPU cycles (total/elapsed)">
+         <extra config="PERF_COUNT_HW_CPU_CYCLES"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="instructions" brief="CPU Instructions"
+              description="the count of instructions by applications running on the platform">
+         <extra config="PERF_COUNT_HW_INSTRUCTIONS"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="cache_references" brief="CPU Cache Accesses"
+              description="the count of cache hits by applications running on the platform">
+         <extra config="PERF_COUNT_HW_CACHE_REFERENCES"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="cache_misses" brief="CPU Cache Misses"
+              description="the count of cache misses by applications running on the platform">
+         <extra config="PERF_COUNT_HW_CACHE_MISSES"/>
+         <data type="uint64_t" unit="misses"/>
+      </entity>
+      <entity name="branch_instructions" brief="CPU Branch Instructions"
+              description="the count of branch instructions by applications running on the platform">
+         <extra config="PERF_COUNT_HW_BRANCH_INSTRUCTIONS"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="branch_misses" brief="CPU Branch Misses"
+              description="the count of branch misses by applications running on the platform">
+         <extra config="PERF_COUNT_HW_BRANCH_MISSES"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="bus_cycles" brief="Bus Cycles"
+              description="the count of bus cycles by applications running on the platform">
+         <extra config="PERF_COUNT_HW_BUS_CYCLES"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="stalled_cycles_frontend" brief="Stalled Cycles in the Frontend"
+              description="the count of stalled CPU cycles in the frontend of the instruction processor pipeline by applications running on the platform">
+         <extra config="PERF_COUNT_HW_STALLED_CYCLES_FRONTEND"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="stalled_cycles_backend" brief="Stalled Cycles in the Backend"
+              description="the count of stalled CPU cycles in the backend of the instruction processor pipeline by applications running on the platform">
+         <extra config="PERF_COUNT_HW_STALLED_CYCLES_BACKEND"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="ref_cpu_cycles" brief="CPU Reference Cycles"
+              description="the count of total CPU cycles not affected by CPU frequency scaling by applications running on the platform">
+         <extra config="PERF_COUNT_HW_REF_CPU_CYCLES"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+  </member>
+
+  <member brief="Software Events"
+          description="This indicates one of the software-defined events provided by the kernel (even if no hardware support is available)"
+          name="perf_sw"
+          type="PERF_TYPE_SOFTWARE">
+      <entity name="cpu_clock" brief="CPU Clock"
+              description="the count of CPU clock time, as measured by a monotonic high-resolution per-CPU timer, by applications running on the platform">
+         <extra config="PERF_COUNT_SW_CPU_CLOCK"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="task_clock" brief="Task Clock"
+              description="the count of task clock time, as measured by a monotonic high-resolution CPU timer, specific to the task that is run by applications running on the platform">
+         <extra config="PERF_COUNT_SW_TASK_CLOCK"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="page_faults" brief="Page Faults"
+              description="the count of page faults by applications running on the platform. This includes minor, major, invalid and other types of page faults">
+         <extra config="PERF_COUNT_SW_PAGE_FAULTS"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="context_switches" brief="Context Switches"
+              description="the count of context switches by applications running on the platform">
+         <extra config="PERF_COUNT_SW_CONTEXT_SWITCHES"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="cpu_migrations" brief="CPU Migrations"
+              description="the count of CPU migrations, that is, where the process moved from one logical processor to another, by applications running on the platform">
+         <extra config="PERF_COUNT_SW_CPU_MIGRATIONS"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="page_faults_min" brief="Minor Page Faults"
+              description="the count of minor page faults, that is, where the page was present in the page cache, and therefore the fault avoided loading it from storage, by applications running on the platform">
+         <extra config="PERF_COUNT_SW_PAGE_FAULTS_MIN"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="page_faults_maj" brief="Major Page Faults"
+              description="the count of major page faults, that is, where the page was not present in the page cache, and therefore had to be fetched from storage, by applications running on the platform">
+         <extra config="PERF_COUNT_SW_PAGE_FAULTS_MAJ"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="alignment_faults" brief="Load and Store Alignment Faults"
+              description="the count of alignment faults, that is when the load or store is not aligned properly, by applications running on the platform">
+         <extra config="PERF_COUNT_SW_ALIGNMENT_FAULTS"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="emulation_faults" brief="Instruction Emulation Faults"
+              description="the count of emulation faults, that is when the kernel traps on unimplemented instructions and emulates them for user space, by applications running on the platform">
+         <extra config="PERF_COUNT_SW_EMULATION_FAULTS"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+  </member>
+
+  <member name="perf_hw_cache" brief="Cache Hardware"
+          description="This indicates a hardware cache event"
+          type="PERF_TYPE_HW_CACHE">
+      <entity name="L1-dcache-loads" brief="Level 1 Data Cache Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1D)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-dcache-load-misses" brief="Level 1 Data Cache Load Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1D)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-dcache-stores" brief="Level 1 Data Cache Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1D)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-dcache-store-misses" brief="Level 1 Data Cache Store Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1D)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-dcache-prefetches" brief="Level 1 Data Cache Prefetches"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1D)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-dcache-prefetch-misses" brief="Level 1 Data Cache Prefetch Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1D)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+
+      <entity name="L1-icache-loads" brief="Level 1 Instruction Cache Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1I)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-icache-load-misses" brief="Level 1 Instruction Cache Load Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1I)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-icache-stores" brief="Level 1 Instruction Cache Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1I)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-icache-store-misses" brief="Level 1 Instruction Cache Load Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1I)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-icache-prefetches" brief="Level 1 Instruction Cache Prefetches"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1I)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="L1-icache-prefetch-misses"
+              brief="Level 1 Instruction Cache Prefetch Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_L1I)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+
+      <entity name="LLC-loads" brief="Last-Level Cache Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_LL)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="LLC-load-misses" brief="Last-Level Cache Load Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_LL)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="LLC-stores" brief="Last-Level Cache Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_LL)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="LLC-store-misses" brief="Last-Level Cache Store Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_LL)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="LLC-prefetches" brief="Last-Level Cache Prefetches" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_LL)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="LLC-prefetch-misses" brief="Last-Level Cache Prefetch Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_LL)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+
+      <entity name="dTLB-loads" brief="Data TLB Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_DTLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="dTLB-load-misses" brief="Data TLB Load Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_DTLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="dTLB-stores" brief="Data TLB Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_DTLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="dTLB-store-misses" brief="Data TLB Store Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_DTLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="dTLB-prefetches" brief="Data TLB Prefetches" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_DTLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="dTLB-prefetch-misses" brief="Data TLB Prefetch Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_DTLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+
+      <entity name="iTLB-loads" brief="Instruction TLB Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_ITLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="iTLB-load-misses" brief="Instruction TLB Load Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_ITLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="iTLB-stores" brief="Instruction TLB Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_ITLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="iTLB-store-misses" brief="Instruction TLB Store Misses" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_ITLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="iTLB-prefetches" brief="Instruction TLB Prefetches" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_ITLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="iTLB-prefetch-misses" brief="Instruction TLB  Prefetch Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_ITLB)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+
+      <entity name="branch-loads" brief="Branch Prediction Unit Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_BPU)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="branch-load-misses" brief="Branch Prediction Unit Load Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_BPU)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="branch-stores" brief="Branch Prediction Unit Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_BPU)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="branch-store-misses" brief="Branch Prediction Unit Store Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_BPU)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="branch-prefetches" brief="Branch Prediction Unit Prefetches"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_BPU)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="branch-prefetch-misses" brief="Branch Prediction Unit Prefetch Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_BPU)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+
+      <entity name="node-loads" brief="Local Memory Accesses Loads" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_NODE)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="node-load-misses" brief="Local Memory Accesses Loads Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_NODE)  BITOR  (PERF_COUNT_HW_CACHE_OP_READ  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="node-stores" brief="Local Memory Accesses Stores" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_NODE)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="node-store-misses" brief="Local Memory Accesses Store Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_NODE)  BITOR  (PERF_COUNT_HW_CACHE_OP_WRITE  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="node-prefetches" brief="Local Memory Accesses Prefetches" description="">
+         <extra config="((PERF_COUNT_HW_CACHE_NODE)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_ACCESS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+      <entity name="node-prefetch-misses" brief="Local Memory Accesses Prefetch Misses"
+              description="">
+         <extra config="((PERF_COUNT_HW_CACHE_NODE)  BITOR  (PERF_COUNT_HW_CACHE_OP_PREFETCH  SHL  8)  BITOR  (PERF_COUNT_HW_CACHE_RESULT_MISS  SHL  16))"/>
+         <data type="uint64_t" unit=""/>
+      </entity>
+  </member>
+
+  <group name="perf_event" brief="Linux Performance Events" description="">
+      <member>perf_hw</member>
+      <member>perf_sw</member>
+      <member>perf_hw_cache</member>
+  </group>
+
+  <group name="hw" brief="Hardware Events" description="">
+      <member>perf_hw</member>
+      <member>perf_hw_cache</member>
+  </group>
+
+  <group name="sw" brief="Software Events" description="">
+      <member>perf_sw</member>
+  </group>
+
+  <group name="cache" brief="Cache Events" description="">
+      <member>perf_hw_cache</member>
+  </group>
+
+</metrics>

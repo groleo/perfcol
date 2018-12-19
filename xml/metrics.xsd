@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="metrics" type="MetricsElement"/>
+
+<xs:complexType name="MetricsElement">
+  <xs:sequence>
+    <xs:element name="extra" type="ExtraElement"/>
+    <xs:element name="member" type="MemberElement" maxOccurs="unbounded" />
+    <xs:element name="group" type="GroupElement" maxOccurs="unbounded" />
+  </xs:sequence>
+  <xs:attribute name="version" type="xs:date"/>
+  <xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+
+
+<xs:complexType name="MemberElement">
+  <xs:sequence>
+    <xs:element name="entity" type="EntityElement" maxOccurs="unbounded" />
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string"/>
+  <xs:attribute name="brief" type="xs:string"/>
+  <xs:attribute name="description" type="xs:string"/>
+  <xs:attribute name="type" type="xs:string"/>
+</xs:complexType>
+
+
+<xs:complexType name="EntityElement">
+  <xs:sequence>
+    <xs:element name="extra" type="ExtraElement"/>
+    <xs:element name="data" type="DataElement"/>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string"/>
+  <xs:attribute name="brief" type="xs:string"/>
+  <xs:attribute name="description" type="xs:string"/>
+</xs:complexType>
+
+
+<xs:complexType name="ExtraElement">
+  <xs:attribute name="config" type="xs:string"/>
+</xs:complexType>
+
+
+<xs:complexType name="DataElement">
+  <xs:attribute name="type">
+   <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="uint32_t"/>
+      <xs:enumeration value="uint64_t"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="unit" type="xs:string"/>
+</xs:complexType>
+
+
+<xs:complexType name="GroupElement">
+  <xs:choice maxOccurs="unbounded">
+    <xs:element name="member" type="xs:string"/>
+  </xs:choice>
+  <xs:attribute name="name" type="xs:string"/>
+  <xs:attribute name="brief" type="xs:string"/>
+  <xs:attribute name="description" type="xs:string"/>
+</xs:complexType>
+
+</xs:schema>
